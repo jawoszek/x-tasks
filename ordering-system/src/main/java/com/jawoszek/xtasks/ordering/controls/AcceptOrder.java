@@ -7,7 +7,7 @@ import com.jawoszek.xtasks.ordering.orders.Order;
 
 import java.util.Map;
 
-import static com.jawoszek.xtasks.ordering.controls.NewOrderOrExit.newOrder;
+import static com.jawoszek.xtasks.ordering.controls.NewOrder.newOrder;
 
 /**
  * @author Kacper

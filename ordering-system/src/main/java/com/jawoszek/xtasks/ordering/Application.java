@@ -4,7 +4,7 @@ import com.jawoszek.xtasks.ordering.console.Console;
 import com.jawoszek.xtasks.ordering.controls.ControlElement;
 import com.jawoszek.xtasks.ordering.food.Menu;
 
-import static com.jawoszek.xtasks.ordering.controls.NewOrderOrExit.newOrder;
+import static com.jawoszek.xtasks.ordering.controls.NewOrder.newOrder;
 
 /**
  * @author Kacper

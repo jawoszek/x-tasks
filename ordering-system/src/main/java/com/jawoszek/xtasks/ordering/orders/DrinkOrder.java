@@ -6,6 +6,9 @@ import com.jawoszek.xtasks.ordering.food.Drink;
  * @author Kacper
  */
 public class DrinkOrder {
+
+    private static final String DESCRIPTION_FORMAT = "Name:%s%s%s";
+
     private final Drink drink;
     private final boolean iceCubs;
     private final boolean lemon;
@@ -26,6 +29,15 @@ public class DrinkOrder {
 
     public boolean isLemon() {
         return lemon;
+    }
+
+    public String getDescription() {
+        return String.format(
+                DESCRIPTION_FORMAT,
+                drink.getDescription(),
+                iceCubs ? "   with ice cubs" : "",
+                lemon ? "   with lemon" : ""
+        );
     }
 
     @Override

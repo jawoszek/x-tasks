@@ -10,9 +10,9 @@ import java.util.Map;
 /**
  * @author Kacper
  */
-public class NewOrderOrExit extends ControlElement {
+public class NewOrder extends ControlElement {
 
-    public NewOrderOrExit(Console console, Menu menu, Order order) {
+    public NewOrder(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -20,7 +20,8 @@ public class NewOrderOrExit extends ControlElement {
     protected Map<Integer, String> actionOptions() {
         return ImmutableMap.of(
                 0, "Create new order",
-                1, "Exit application"
+                1, "Show menu",
+                2, "Exit application"
         );
     }
 
@@ -30,13 +31,15 @@ public class NewOrderOrExit extends ControlElement {
             case 0:
                 return new OrderControl(console, menu, order);
             case 1:
+                return new MenuView(console, menu, order, this);
+            case 2:
                 return null;
             default:
                 throw new IllegalArgumentException(); // TODO description
         }
     }
 
-    public static NewOrderOrExit newOrder(Console console, Menu menu){
-        return new NewOrderOrExit(console, menu, new Order());
+    public static NewOrder newOrder(Console console, Menu menu){
+        return new NewOrder(console, menu, new Order());
     }
 }

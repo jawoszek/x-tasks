@@ -1,6 +1,5 @@
 package com.jawoszek.xtasks.ordering.orders;
 
-import com.jawoszek.xtasks.ordering.food.Drink;
 import com.jawoszek.xtasks.ordering.food.Lunch;
 
 import java.util.Map;
@@ -11,6 +10,9 @@ import java.util.function.Function;
  * @author Kacper
  */
 public class Order {
+
+    private static final String ORDER_FORMAT = "Lunches:%n%s%nDrinks:%n%s%n";
+
     private final DrinksOrder drinksOrder = new DrinksOrder();
     private final LunchesOrder lunchesOrder = new LunchesOrder();
 
@@ -24,6 +26,10 @@ public class Order {
 
     public int getPrice() {
         return drinksOrder.getPrice() + lunchesOrder.getPrice();
+    }
+
+    public String getOrderText() {
+        return String.format(ORDER_FORMAT, lunchesOrder.getOrderText(), drinksOrder.getOrderText());
     }
 
     static <T> int getPrice(Map<T, Integer> map, Function<Entry<T, Integer>, Integer> fromEntryToPrice) {

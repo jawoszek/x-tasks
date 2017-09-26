@@ -21,7 +21,7 @@ public class OrderView extends ControlElement {
 
     @Override
     protected String preActionMessage() {
-        return "PLACEHOLDER FOR ORDER VIEW"; // TODO order view
+        return order.getOrderText();
     }
 
     @Override

@@ -28,7 +28,7 @@ public class ModifyOrder extends ControlElement {
     protected ControlElement getNextBasedOnChosenOption(int chosenOption) {
         switch (chosenOption) {
             case 0:
-                return null;
+                return new AddLunch(console, menu, order);
             case 1:
                 return new AddDrink(console, menu, order);
             default:
