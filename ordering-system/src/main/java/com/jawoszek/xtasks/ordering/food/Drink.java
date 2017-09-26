@@ -1,8 +1,6 @@
 package com.jawoszek.xtasks.ordering.food;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import static java.lang.String.format;
 
 /**
  * @author Kacper
@@ -12,6 +10,8 @@ public enum Drink {
     HALF_A_LITER_OF_PEPSI("pepsi", 500, 699),
     TWO_HUNDRED_MILLIS_OF_PEPSI("pepsi", 200, 399),
     HALF_A_LITER_OF_LEMONADE("lemonade", 500, 599);
+
+    private static final String DRINK_DESCRIPTION_FORMAT = "Name:%s   Amount:%s   Price:%s";
 
     private final String name;
     private final int amountInMilliliters;
@@ -32,19 +32,10 @@ public enum Drink {
     }
 
     public int getPrice() {
-        Drink.values();
         return price;
     }
 
-    public static Map<Integer, Drink> getIndexedDrinks(){
-        return IntStream
-                .range(0, Drink.values().length)
-                .boxed()
-                .collect(
-                        Collectors.toMap(
-                                index -> index,
-                                index -> Drink.values()[index]
-                        )
-                );
+    public String getDescription(){
+        return format(DRINK_DESCRIPTION_FORMAT, name, amountInMilliliters, price);
     }
 }

@@ -45,4 +45,8 @@ public class DrinkOrder {
         result = 31 * result + (lemon ? 1 : 0);
         return result;
     }
+
+    public static DrinkOrderBuilder builder() {
+        return new DrinkOrderBuilder();
+    }
 }

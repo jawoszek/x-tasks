@@ -15,4 +15,12 @@ public class LunchesOrder {
     public void addLunch(Lunch lunch, int amount) {
         lunches.merge(lunch, amount, (current, added) -> current + added);
     }
+
+    public int getPrice() {
+        return Order.getPrice(lunches, LunchesOrder::calculatePriceFromEntry);
+    }
+
+    private static int calculatePriceFromEntry(Map.Entry<Lunch, Integer> entry) {
+        return entry.getKey().getPrice() * entry.getValue();
+    }
 }

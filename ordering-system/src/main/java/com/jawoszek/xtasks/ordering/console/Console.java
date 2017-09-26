@@ -1,18 +1,20 @@
 package com.jawoszek.xtasks.ordering.console;
 
-import com.google.common.base.Joiner;
-
 import java.io.PrintStream;
 import java.util.Map;
 import java.util.Scanner;
+
+import static com.google.common.base.Joiner.on;
+import static java.util.Collections.nCopies;
 
 /**
  * @author Kacper
  */
 public class Console {
 
-    private static final String LINE_SEPARATOR = System.lineSeparator();
+    public static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String KEY_VALUE_SEPARATOR = " - ";
+    private static final String CLEAR_SCREEN_SEQUENCE = on(LINE_SEPARATOR).join(nCopies(4, LINE_SEPARATOR));
 
     private final PrintStream out;
     private final Scanner in;
@@ -22,17 +24,31 @@ public class Console {
         this.in = in;
     }
 
+    public void printMessage(String message) {
+        out.println(message);
+    }
+
     public void printOptions(Map<Integer, String> options) {
-        String textToPrint = Joiner
-                .on(LINE_SEPARATOR)
+        String textToPrint =
+                on(LINE_SEPARATOR)
                 .withKeyValueSeparator(KEY_VALUE_SEPARATOR)
                 .join(options);
         out.println(textToPrint);
     }
 
     public int getNumberFromInput() {
+        out.println("Please choose valid number from options above");
         String line = in.nextLine();
-        return Integer.parseInt(line);
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            out.println("Not a number!");
+        }
+        return -1;
+    }
+
+    public void clearScreen(){
+        out.print(CLEAR_SCREEN_SEQUENCE);
     }
 
     public static Console standardConsole() {
@@ -41,7 +57,7 @@ public class Console {
                 new Scanner(System.in));
     }
 
-    public void close(){
+    public void close() {
         out.close();
         in.close();
     }

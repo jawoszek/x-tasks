@@ -12,9 +12,15 @@ public class DrinksOrder {
 
     private final Map<DrinkOrder, Integer> drinks = new HashMap<>();
 
-    public void addDrinks(Drink drink, boolean iceCubs, boolean lemon, int amount) {
-        DrinkOrder drinkOrder = new DrinkOrder(drink, iceCubs, lemon);
-
+    public void addDrinks(DrinkOrder drinkOrder, int amount) {
         drinks.merge(drinkOrder, amount, (current, added) -> current + added);
+    }
+
+    public int getPrice() {
+        return Order.getPrice(drinks, DrinksOrder::calculatePriceFromEntry);
+    }
+
+    private static int calculatePriceFromEntry(Map.Entry<DrinkOrder, Integer> entry) {
+        return entry.getKey().getDrink().getPrice() * entry.getValue();
     }
 }

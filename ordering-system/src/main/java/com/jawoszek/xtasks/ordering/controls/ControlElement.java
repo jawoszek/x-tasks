@@ -4,10 +4,14 @@ import com.jawoszek.xtasks.ordering.console.Console;
 import com.jawoszek.xtasks.ordering.food.Menu;
 import com.jawoszek.xtasks.ordering.orders.Order;
 
+import java.util.Map;
+
 /**
  * @author Kacper
  */
 public abstract class ControlElement {
+
+    protected static final String CURRENT_ORDER_PRICE_LINE = "=== Current order price: %d ===";
 
     protected final Console console;
     protected final Menu menu;
@@ -19,5 +23,35 @@ public abstract class ControlElement {
         this.order = order;
     }
 
-    public abstract ControlElement next();
+    public ControlElement next() {
+        console.clearScreen();
+        console.printMessage(preActionMessage());
+        return action();
+    }
+
+    protected ControlElement action() {
+        if (actionOptions().isEmpty()) {
+            throw new IllegalStateException(); // TODO description
+        }
+
+        console.printOptions(actionOptions());
+        int chosenOption = readChosenOption();
+        return getNextBasedOnChosenOption(chosenOption);
+    }
+
+    protected int readChosenOption() {
+        int chosenOption = -1;
+        while (!actionOptions().containsKey(chosenOption)) {
+            chosenOption = console.getNumberFromInput();
+        }
+        return chosenOption;
+    }
+
+    protected abstract Map<Integer, String> actionOptions();
+
+    protected abstract ControlElement getNextBasedOnChosenOption(int chosenOption);
+
+    protected String preActionMessage() {
+        return String.format(CURRENT_ORDER_PRICE_LINE, order.getPrice());
+    }
 }
