@@ -1,5 +1,9 @@
 package com.jawoszek.xtasks.ordering.food;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static com.jawoszek.xtasks.ordering.food.Cuisine.ITALIAN;
 import static com.jawoszek.xtasks.ordering.food.Cuisine.MEXICAN;
 import static com.jawoszek.xtasks.ordering.food.Cuisine.POLISH;
@@ -49,5 +53,17 @@ public enum Lunch {
 
     public int getPrice() {
         return price;
+    }
+
+    public static Map<Integer, Lunch> getIndexedLunches(){
+        return IntStream
+                .range(0, Lunch.values().length)
+                .boxed()
+                .collect(
+                        Collectors.toMap(
+                                index -> index,
+                                index -> Lunch.values()[index]
+                        )
+                );
     }
 }

@@ -1,5 +1,9 @@
 package com.jawoszek.xtasks.ordering.food;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * @author Kacper
  */
@@ -28,6 +32,19 @@ public enum Drink {
     }
 
     public int getPrice() {
+        Drink.values();
         return price;
+    }
+
+    public static Map<Integer, Drink> getIndexedDrinks(){
+        return IntStream
+                .range(0, Drink.values().length)
+                .boxed()
+                .collect(
+                        Collectors.toMap(
+                                index -> index,
+                                index -> Drink.values()[index]
+                        )
+                );
     }
 }
