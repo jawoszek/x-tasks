@@ -13,20 +13,22 @@ import static com.jawoszek.xtasks.ordering.food.Dish.PORK_CHOP_WITH_POTATOES;
  * @author Kacper
  */
 public enum Lunch {
-    STANDARD_POLISH_LUNCH(POLISH, PORK_CHOP_WITH_POTATOES, APPLE_PIE),
-    STANDARD_MEXICO_LUNCH(MEXICAN, NACHOS, CHOCOLATE_CAKE),
-    STANDARD_ITALIAN_LUNCH(ITALIAN, PIZZA, CHOCOLATE_CAKE);
+    STANDARD_POLISH_LUNCH(POLISH, PORK_CHOP_WITH_POTATOES, APPLE_PIE, 1299),
+    STANDARD_MEXICO_LUNCH(MEXICAN, NACHOS, CHOCOLATE_CAKE, 1599),
+    STANDARD_ITALIAN_LUNCH(ITALIAN, PIZZA, CHOCOLATE_CAKE, 1899);
 
     private static final String DESCRIPTION_FORMAT = "main dish: %s%ndessert: %s";
 
     private final Cuisine cuisine;
     private final Dish dish;
     private final Dessert dessert;
+    private final int price;
 
-    Lunch(Cuisine cuisine, Dish dish, Dessert dessert) {
+    Lunch(Cuisine cuisine, Dish dish, Dessert dessert, int price) {
         this.cuisine = cuisine;
         this.dish = dish;
         this.dessert = dessert;
+        this.price = price;
     }
 
     public String getDescription(){
@@ -43,5 +45,9 @@ public enum Lunch {
 
     public Dessert getDessert() {
         return dessert;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }
