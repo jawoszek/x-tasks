@@ -14,7 +14,7 @@ public class OrderView extends ControlElement {
 
     private final ControlElement previousElement;
 
-    public OrderView(Console console, Menu menu, Order order, ControlElement previousElement) {
+    OrderView(Console console, Menu menu, Order order, ControlElement previousElement) {
         super(console, menu, order);
         this.previousElement = previousElement;
     }
@@ -37,7 +37,7 @@ public class OrderView extends ControlElement {
             case 0:
                 return previousElement;
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
     }
 }

@@ -16,7 +16,7 @@ public class AdditionalDrinkProperties extends ControlElement {
 
     private final DrinkOrderBuilder builder;
 
-    public AdditionalDrinkProperties(Console console, Menu menu, Order order, DrinkOrderBuilder builder) {
+    AdditionalDrinkProperties(Console console, Menu menu, Order order, DrinkOrderBuilder builder) {
         super(console, menu, order);
         this.builder = builder;
     }
@@ -48,7 +48,7 @@ public class AdditionalDrinkProperties extends ControlElement {
                 drinkOrder = builder.withIceCubs(false).withLemon(false).build();
                 break;
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
         order.addDrinks(drinkOrder, 1);
         return new OrderControl(console, menu, order);

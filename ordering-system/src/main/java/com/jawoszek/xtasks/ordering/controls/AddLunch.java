@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  */
 public class AddLunch extends ControlElement {
 
-    public AddLunch(Console console, Menu menu, Order order) {
+    AddLunch(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -32,8 +32,8 @@ public class AddLunch extends ControlElement {
 
     @Override
     protected ControlElement getNextBasedOnChosenOption(int chosenOption) {
-        if (!actionOptions().containsKey(chosenOption)){
-            throw new IllegalArgumentException(); // TODO description
+        if (!actionOptions().containsKey(chosenOption)) {
+            throw illegalOptionException(chosenOption);
         }
         Lunch lunchToAdd = menu.getLunches().get(chosenOption);
         order.addLunch(lunchToAdd, 1);

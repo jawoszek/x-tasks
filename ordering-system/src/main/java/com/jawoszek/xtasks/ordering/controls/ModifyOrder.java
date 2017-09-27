@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class ModifyOrder extends ControlElement {
 
-    public ModifyOrder(Console console, Menu menu, Order order) {
+    ModifyOrder(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -32,7 +32,7 @@ public class ModifyOrder extends ControlElement {
             case 1:
                 return new AddDrink(console, menu, order);
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
     }
 }

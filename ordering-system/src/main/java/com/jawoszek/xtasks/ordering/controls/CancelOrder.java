@@ -14,7 +14,7 @@ import static com.jawoszek.xtasks.ordering.controls.NewOrder.newOrder;
  */
 public class CancelOrder extends ControlElement {
 
-    public CancelOrder(Console console, Menu menu, Order order) {
+    CancelOrder(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -32,7 +32,7 @@ public class CancelOrder extends ControlElement {
                 console.printMessage("Order cancelled"); // TODO more details
                 return newOrder(console, menu);
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
     }
 }

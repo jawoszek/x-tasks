@@ -14,7 +14,7 @@ import static com.jawoszek.xtasks.ordering.controls.NewOrder.newOrder;
  */
 public class AcceptOrder extends ControlElement {
 
-    public AcceptOrder(Console console, Menu menu, Order order) {
+    AcceptOrder(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -29,10 +29,10 @@ public class AcceptOrder extends ControlElement {
     protected ControlElement getNextBasedOnChosenOption(int chosenOption) {
         switch (chosenOption) {
             case 0:
-                console.printMessage("Order accepted"); // TODO more details
+                console.printMessage("Order accepted");
                 return newOrder(console, menu);
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
     }
 }

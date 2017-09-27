@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  */
 public class AddDrink extends ControlElement {
 
-    public AddDrink(Console console, Menu menu, Order order) {
+    AddDrink(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -34,8 +34,8 @@ public class AddDrink extends ControlElement {
 
     @Override
     protected ControlElement getNextBasedOnChosenOption(int chosenOption) {
-        if (!actionOptions().containsKey(chosenOption)){
-            throw new IllegalArgumentException(); // TODO description
+        if (!actionOptions().containsKey(chosenOption)) {
+            throw illegalOptionException(chosenOption);
         }
         Drink drinkToAdd = menu.getDrinks().get(chosenOption);
         DrinkOrderBuilder builder = DrinkOrder.builder().withDrink(drinkToAdd);

@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public abstract class ControlElement {
 
-    protected static final String CURRENT_ORDER_PRICE_LINE = "=== Current order price: %d ===";
+    private static final String CURRENT_ORDER_PRICE_LINE = "=== Current order price: %d ===";
 
     protected final Console console;
     protected final Menu menu;
@@ -53,5 +53,9 @@ public abstract class ControlElement {
 
     protected String preActionMessage() {
         return String.format(CURRENT_ORDER_PRICE_LINE, order.getPrice());
+    }
+
+    protected IllegalArgumentException illegalOptionException(int option) {
+        return new IllegalArgumentException("Illegal option passed:" + option);
     }
 }

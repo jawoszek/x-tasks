@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class OrderControl extends ControlElement {
 
-    public OrderControl(Console console, Menu menu, Order order) {
+    OrderControl(Console console, Menu menu, Order order) {
         super(console, menu, order);
     }
 
@@ -38,7 +38,7 @@ public class OrderControl extends ControlElement {
             case 3:
                 return new CancelOrder(console, menu, order);
             default:
-                throw new IllegalArgumentException(); // TODO description
+                throw illegalOptionException(chosenOption);
         }
     }
 }
