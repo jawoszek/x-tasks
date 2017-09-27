@@ -27,7 +27,8 @@ public class AddDrink extends ControlElement {
                 .collect(
                         Collectors.toMap(
                                 Map.Entry::getKey,
-                                entry -> entry.getValue().getDescription()
+                                entry -> entry.getValue()
+                                        .getDescription(menu.getCurrency())
                         )
                 );
     }
