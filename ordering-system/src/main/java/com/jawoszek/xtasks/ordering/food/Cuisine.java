@@ -1,5 +1,7 @@
 package com.jawoszek.xtasks.ordering.food;
 
+import com.jawoszek.xtasks.ordering.currency.Currency;
+
 import java.util.stream.Collectors;
 
 import static com.jawoszek.xtasks.ordering.console.Console.LINE_SEPARATOR;
@@ -25,11 +27,11 @@ public enum Cuisine {
         return name;
     }
 
-    public String getMenuPart() {
+    public String getMenuPart(Currency currency) {
         String lunchesPart =
                 stream(Lunch.values())
                         .filter(lunch -> lunch.getCuisine().equals(this))
-                        .map(Lunch::getDescription)
+                        .map(lunch -> lunch.getDescription(currency))
                         .collect(Collectors.joining(LINE_SEPARATOR));
 
         return String.format(CUISINE_MENU_PART_FORMAT, name, lunchesPart);

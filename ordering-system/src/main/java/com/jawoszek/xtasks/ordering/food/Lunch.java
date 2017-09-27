@@ -1,5 +1,7 @@
 package com.jawoszek.xtasks.ordering.food;
 
+import com.jawoszek.xtasks.ordering.currency.Currency;
+
 import static com.jawoszek.xtasks.ordering.food.Cuisine.*;
 import static com.jawoszek.xtasks.ordering.food.Dessert.APPLE_PIE;
 import static com.jawoszek.xtasks.ordering.food.Dessert.CHOCOLATE_CAKE;
@@ -44,7 +46,9 @@ public enum Lunch {
         return price;
     }
 
-    public String getDescription(){
-        return format(DESCRIPTION_FORMAT, dish.getName(), dessert.getName(), price);
+    public String getDescription(Currency currency) {
+        String priceText = currency.convert(price) + currency.getCurrencySymbol();
+
+        return format(DESCRIPTION_FORMAT, dish.getName(), dessert.getName(), priceText);
     }
 }

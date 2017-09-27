@@ -1,5 +1,8 @@
 package com.jawoszek.xtasks.ordering.food;
 
+import com.jawoszek.xtasks.ordering.currency.Currency;
+import com.jawoszek.xtasks.ordering.currency.USDollar;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -16,10 +19,12 @@ public class Menu {
 
     private final Map<Integer, Lunch> lunches;
     private final Map<Integer, Drink> drinks;
+    private final Currency currency;
 
-    private Menu(Map<Integer, Lunch> lunches, Map<Integer, Drink> drinks) {
+    private Menu(Map<Integer, Lunch> lunches, Map<Integer, Drink> drinks, Currency currency) {
         this.lunches = lunches;
         this.drinks = drinks;
+        this.currency = currency;
     }
 
     public Map<Integer, Lunch> getLunches() {
@@ -30,13 +35,17 @@ public class Menu {
         return drinks;
     }
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
     public String getMenuText() {
         return String.format(MENU_TEXT_FORMAT, getLunchMenuPart(), getDrinkMenuPart());
     }
 
     private String getLunchMenuPart() {
         return stream(Cuisine.values())
-                .map(Cuisine::getMenuPart)
+                .map(cuisine -> cuisine.getMenuPart(currency))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
@@ -44,14 +53,15 @@ public class Menu {
         return drinks
                 .values()
                 .stream()
-                .map(Drink::getDescription)
+                .map(drink -> drink.getDescription(currency))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
     public static Menu standardMenu() {
         return new Menu(
                 indexedMap(Lunch.values()),
-                indexedMap(Drink.values())
+                indexedMap(Drink.values()),
+                new USDollar()
         );
     }
 
