@@ -1,5 +1,6 @@
 package com.jawoszek.xtasks.ordering.orders;
 
+import com.jawoszek.xtasks.ordering.currency.Currency;
 import com.jawoszek.xtasks.ordering.food.Drink;
 
 /**
@@ -31,10 +32,10 @@ public class DrinkOrder {
         return lemon;
     }
 
-    public String getDescription() {
+    public String getDescription(Currency currency) {
         return String.format(
                 DESCRIPTION_FORMAT,
-                drink.getDescription(),
+                drink.getDescription(currency),
                 iceCubs ? "   with ice cubs" : "",
                 lemon ? "   with lemon" : ""
         );

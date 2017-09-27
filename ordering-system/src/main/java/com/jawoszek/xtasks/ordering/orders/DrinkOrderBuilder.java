@@ -6,13 +6,10 @@ import com.jawoszek.xtasks.ordering.food.Drink;
  * @author Kacper
  */
 public class DrinkOrderBuilder {
+
     private Drink drink;
     private boolean iceCubs;
     private boolean lemon;
-
-    DrinkOrderBuilder() {
-
-    }
 
     public DrinkOrderBuilder withDrink(Drink drink) {
         this.drink = drink;
