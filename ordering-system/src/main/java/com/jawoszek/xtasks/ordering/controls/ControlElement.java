@@ -43,10 +43,10 @@ public abstract class ControlElement {
     }
 
     protected int readChosenOption() {
-        int chosenOption = -1;
-        while (!actionOptions().containsKey(chosenOption)) {
-            chosenOption = console.getNumberFromInput();
-        }
+        int chosenOption;
+        do {
+            chosenOption = console.getNumberFromInput().orElse(-1);
+        } while (!actionOptions().containsKey(chosenOption));
         return chosenOption;
     }
 

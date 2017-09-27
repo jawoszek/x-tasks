@@ -40,6 +40,10 @@ public class NewOrder extends ControlElement {
     }
 
     public static NewOrder newOrder(Console console, Menu menu) {
-        return new NewOrder(console, menu, new Order());
+        return new NewOrder(
+                console,
+                menu,
+                new Order(menu.getCurrency())
+        );
     }
 }

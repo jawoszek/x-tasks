@@ -7,6 +7,8 @@ import com.jawoszek.xtasks.ordering.food.Drink;
  */
 public class DrinkOrderBuilder {
 
+    private static final String BUILDING_EXCEPTION_DESCRIPTION = "Drink cannot be null in DrinkOrder";
+
     private Drink drink;
     private boolean iceCubs;
     private boolean lemon;
@@ -28,7 +30,7 @@ public class DrinkOrderBuilder {
 
     public DrinkOrder build() {
         if (drink == null) {
-            throw new IllegalStateException(); //TODO description
+            throw new IllegalStateException(BUILDING_EXCEPTION_DESCRIPTION);
         }
         return new DrinkOrder(drink, iceCubs, lemon);
     }
