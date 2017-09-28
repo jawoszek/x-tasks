@@ -15,14 +15,14 @@ public class Application {
         Menu menu = Menu.standardMenu();
         try {
             new Application().start(console, menu);
-        }finally {
+        } finally {
             console.close();
         }
     }
 
     public void start(Console console, Menu menu) {
         ControlElement currentControl = newOrder(console, menu);
-        while(currentControl != null) {
+        while (currentControl != null) {
             currentControl = currentControl.next();
         }
     }

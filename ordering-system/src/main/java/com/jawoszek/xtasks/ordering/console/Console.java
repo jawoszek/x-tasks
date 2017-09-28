@@ -35,8 +35,8 @@ public class Console {
     public void printOptions(Map<Integer, String> options) {
         String textToPrint =
                 on(LINE_SEPARATOR)
-                .withKeyValueSeparator(KEY_VALUE_SEPARATOR)
-                .join(options);
+                        .withKeyValueSeparator(KEY_VALUE_SEPARATOR)
+                        .join(options);
         out.println(textToPrint);
     }
 
@@ -54,8 +54,8 @@ public class Console {
         return ofNullable(output);
     }
 
-    public void clearScreen(){
-        out.print(CLEAR_SCREEN_SEQUENCE);
+    public void clearScreen() {
+        out.println(CLEAR_SCREEN_SEQUENCE);
     }
 
     public static Console standardConsole() {

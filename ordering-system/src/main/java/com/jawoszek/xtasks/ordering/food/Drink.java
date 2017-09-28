@@ -37,7 +37,7 @@ public enum Drink {
         return price;
     }
 
-    public String getDescription(Currency currency){
+    public String getDescription(Currency currency) {
         String priceText = currency.convert(price) + currency.getCurrencySymbol();
 
         return format(DRINK_DESCRIPTION_FORMAT, name, amountInMilliliters, priceText);
