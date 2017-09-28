@@ -21,6 +21,7 @@ public class LinesVerifier {
     private static final String OPTIONS_REQUEST = "Please choose valid number from options above";
     private static final String CLEAR_SCREEN = format("%n%n%n");
     private static final String CANCELLED = "Order cancelled";
+    private static final String MAIN_MENU_HEADER = "Welcome to ordering system!";
 
     private final Map<String, Integer> expectedLines = new HashMap<>();
     private final PrintStream mockPrintStream;
@@ -30,7 +31,7 @@ public class LinesVerifier {
     }
 
     public void expectNewOrder() {
-        expectLine(ZERO_PRICE_HEADER);
+        expectLine(MAIN_MENU_HEADER);
         expectLine(MAIN_MENU);
         expectLine(OPTIONS_REQUEST);
         expectLine(CLEAR_SCREEN);

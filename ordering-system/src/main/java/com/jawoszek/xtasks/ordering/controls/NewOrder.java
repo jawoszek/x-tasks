@@ -12,8 +12,15 @@ import java.util.Map;
  */
 public class NewOrder extends ControlElement {
 
+    private static final String WELCOME_MESSAGE = "Welcome to ordering system!";
+
     private NewOrder(Console console, Menu menu, Order order) {
         super(console, menu, order);
+    }
+
+    @Override
+    protected String preActionMessage() {
+        return WELCOME_MESSAGE;
     }
 
     @Override

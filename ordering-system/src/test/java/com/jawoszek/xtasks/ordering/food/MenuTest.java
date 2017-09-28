@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class MenuTest {
 
     @Test
-    public void getSimpleMenuText() throws Exception {
+    public void getSimpleMenuText() {
         // given
         Menu menu = new Menu(
                 ImmutableMap.of(1, Lunch.STANDARD_POLISH_LUNCH),

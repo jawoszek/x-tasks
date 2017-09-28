@@ -12,7 +12,7 @@ public class USDollarTest {
     private static final USDollar dollar = new USDollar();
 
     @Test
-    public void convertTenDollars() throws Exception {
+    public void convertTenDollars() {
         // given
         int priceInPennies = 1000;
         String expectedPriceInDollars = "10.00";
@@ -25,7 +25,7 @@ public class USDollarTest {
     }
 
     @Test
-    public void convertOneDollarNinetyNinePennies() throws Exception {
+    public void convertOneDollarNinetyNinePennies() {
         // given
         int priceInPennies = 199;
         String expectedPriceInDollars = "1.99";
@@ -38,7 +38,7 @@ public class USDollarTest {
     }
 
     @Test
-    public void convertNinetyNinePennies() throws Exception {
+    public void convertNinetyNinePennies() {
         // given
         int priceInPennies = 99;
         String expectedPriceInDollars = "0.99";
@@ -51,7 +51,7 @@ public class USDollarTest {
     }
 
     @Test
-    public void convertNinePennies() throws Exception {
+    public void convertNinePennies() {
         // given
         int priceInPennies = 9;
         String expectedPriceInDollars = "0.09";
@@ -64,7 +64,7 @@ public class USDollarTest {
     }
 
     @Test
-    public void convertZero() throws Exception {
+    public void convertZero() {
         // given
         int priceInPennies = 0;
         String expectedPriceInDollars = "0.00";
