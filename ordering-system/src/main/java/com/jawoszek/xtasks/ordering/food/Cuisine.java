@@ -4,7 +4,7 @@ import com.jawoszek.xtasks.ordering.currency.Currency;
 
 import java.util.stream.Collectors;
 
-import static com.jawoszek.xtasks.ordering.console.Console.LINE_SEPARATOR;
+import static com.jawoszek.xtasks.ordering.console.Console.*;
 import static java.util.Arrays.stream;
 
 /**
@@ -31,10 +31,18 @@ public enum Cuisine {
         String lunchesPart =
                 stream(Lunch.values())
                         .filter(lunch -> lunch.getCuisine().equals(this))
-                        .map(lunch -> lunch.getDescription(currency))
+                        .map(lunch -> lunchMenuPosition(lunch, currency))
                         .collect(Collectors.joining(LINE_SEPARATOR));
 
-        return String.format(CUISINE_MENU_PART_FORMAT, name, lunchesPart);
+        return String.format(CUISINE_MENU_PART_FORMAT, menuPosition(), lunchesPart);
 
+    }
+
+    private String menuPosition() {
+        return SMALL_INDENTATION + name;
+    }
+
+    private static String lunchMenuPosition(Lunch lunch, Currency currency) {
+        return BIG_INDENTATION + lunch.getDescription(currency);
     }
 }

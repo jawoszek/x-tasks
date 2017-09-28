@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import static java.lang.String.format;
+
 /**
  * @author Kacper
  */
@@ -40,7 +42,7 @@ public class ApplicationTest {
     @Test
     public void startWithEmptyCancelledOrder() {
         // given
-        Scanner scanner = new Scanner(getInputStream("0\n3\n0\n2"));
+        Scanner scanner = new Scanner(getInputStream(format("0%n3%n0%n2")));
         Console console = new Console(mockPrintStream, scanner);
         Menu menu = Menu.standardMenu();
         LinesVerifier verifier = new LinesVerifier(mockPrintStream);

@@ -19,7 +19,7 @@ public class LinesVerifier {
             format("%s%n%s%n%s%n%s", "0 - Show order", "1 - Modify order", "2 - Accept order", "3 - Cancel order");
     private static final String CONTINUE_MENU = "0 - Continue";
     private static final String OPTIONS_REQUEST = "Please choose valid number from options above";
-    private static final String CLEAR_SCREEN = format("%n%n%n%n%n%n%n");
+    private static final String CLEAR_SCREEN = format("%n%n%n");
     private static final String CANCELLED = "Order cancelled";
 
     private final Map<String, Integer> expectedLines = new HashMap<>();

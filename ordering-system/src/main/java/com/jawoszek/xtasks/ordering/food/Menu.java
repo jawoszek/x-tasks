@@ -19,11 +19,13 @@ public class Menu {
 
     private final Map<Integer, Lunch> lunches;
     private final Map<Integer, Drink> drinks;
+    private final Map<Integer, Cuisine> cuisines;
     private final Currency currency;
 
-    private Menu(Map<Integer, Lunch> lunches, Map<Integer, Drink> drinks, Currency currency) {
+    public Menu(Map<Integer, Lunch> lunches, Map<Integer, Drink> drinks, Map<Integer, Cuisine> cuisines, Currency currency) {
         this.lunches = lunches;
         this.drinks = drinks;
+        this.cuisines = cuisines;
         this.currency = currency;
     }
 
@@ -35,6 +37,10 @@ public class Menu {
         return drinks;
     }
 
+    public Map<Integer, Cuisine> getCuisines() {
+        return cuisines;
+    }
+
     public Currency getCurrency() {
         return currency;
     }
@@ -44,7 +50,9 @@ public class Menu {
     }
 
     private String getLunchMenuPart() {
-        return stream(Cuisine.values())
+        return cuisines
+                .values()
+                .stream()
                 .map(cuisine -> cuisine.getMenuPart(currency))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
@@ -53,7 +61,7 @@ public class Menu {
         return drinks
                 .values()
                 .stream()
-                .map(drink -> drink.getDescription(currency))
+                .map(drink -> drink.getMenuPosition(currency))
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
@@ -61,6 +69,7 @@ public class Menu {
         return new Menu(
                 indexedMap(Lunch.values()),
                 indexedMap(Drink.values()),
+                indexedMap(Cuisine.values()),
                 new USDollar()
         );
     }

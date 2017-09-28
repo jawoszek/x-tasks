@@ -2,6 +2,7 @@ package com.jawoszek.xtasks.ordering.food;
 
 import com.jawoszek.xtasks.ordering.currency.Currency;
 
+import static com.jawoszek.xtasks.ordering.console.Console.SMALL_INDENTATION;
 import static java.lang.String.format;
 
 /**
@@ -41,5 +42,9 @@ public enum Drink {
         String priceText = currency.convert(price) + currency.getCurrencySymbol();
 
         return format(DRINK_DESCRIPTION_FORMAT, name, amountInMilliliters, priceText);
+    }
+
+    public String getMenuPosition(Currency currency){
+        return SMALL_INDENTATION + getDescription(currency);
     }
 }
