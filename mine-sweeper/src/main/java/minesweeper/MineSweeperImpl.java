@@ -21,19 +21,19 @@ public class MineSweeperImpl implements MineSweeper {
         this.minefield = null;
         String[] rows = mineField.split(ROWS_SEPARATOR);
 
-        int m = rows.length;
-        if (m < 1 || rows[0].length() < 1) {
+        int rowsCount = rows.length;
+        if (rowsCount < 1 || rows[0].length() < 1) {
             throw new IllegalArgumentException("Field or its first row cannot be empty");
         }
 
-        int n = rows[0].length();
-        boolean allRowsHaveSameLength = stream(rows).allMatch(row -> row.length() == n);
+        int columnsCount = rows[0].length();
+        boolean allRowsHaveSameLength = stream(rows).allMatch(row -> row.length() == columnsCount);
 
         if (!allRowsHaveSameLength) {
             throw new IllegalArgumentException("Cannot set field with different rows length");
         }
 
-        int[][] minefield = new int[m][n];
+        int[][] minefield = new int[rowsCount][columnsCount];
 
         iterateOverRows(minefield, rows);
 
@@ -67,27 +67,31 @@ public class MineSweeperImpl implements MineSweeper {
             case NON_MINE_CHAR:
                 break;
             case MINE_CHAR:
-                markMine(minefield, row, column);
+                markMineIterateOverRows(minefield, row, column);
                 break;
             default:
                 throw new IllegalArgumentException("Illegal character in minefield");
         }
     }
 
-    private void markMine(int[][] minefield, int row, int column) {
-        for (int i = row - 1; i <= row + 1; i++) {
-            if (i < 0 || i >= minefield.length) {
+    private void markMineIterateOverRows(int[][] minefield, int row, int column) {
+        for (int currentRow = row - 1; currentRow <= row + 1; currentRow++) {
+            if (currentRow < 0 || currentRow >= minefield.length) {
                 continue;
             }
-            for (int j = column - 1; j <= column + 1; j++) {
-                if (j < 0 || j >= minefield[i].length) {
-                    continue;
-                }
-                if (i == row && j == column) {
-                    minefield[i][j] += 9;
-                } else {
-                    minefield[i][j]++;
-                }
+            markMineIterateOverColumns(minefield, row, column, currentRow);
+        }
+    }
+
+    private void markMineIterateOverColumns(int[][] minefield, int row, int column, int currentRow) {
+        for (int currentColumn = column - 1; currentColumn <= column + 1; currentColumn++) {
+            if (currentColumn < 0 || currentColumn >= minefield[currentRow].length) {
+                continue;
+            }
+            if (currentRow == row && currentColumn == column) {
+                minefield[currentRow][currentColumn] += 9;
+            } else {
+                minefield[currentRow][currentColumn]++;
             }
         }
     }
