@@ -12,7 +12,8 @@ public enum Drink {
     HALF_A_LITER_OF_WATER("water", 500, 599),
     HALF_A_LITER_OF_PEPSI("pepsi", 500, 699),
     TWO_HUNDRED_MILLIS_OF_PEPSI("pepsi", 200, 399),
-    HALF_A_LITER_OF_LEMONADE("lemonade", 500, 599);
+    HALF_A_LITER_OF_LEMONADE("lemonade", 500, 599),
+    TEA("black tea", 300, 499);
 
     private static final String DRINK_DESCRIPTION_FORMAT = "Name:%s   Amount:%s   Price:%s";
 
