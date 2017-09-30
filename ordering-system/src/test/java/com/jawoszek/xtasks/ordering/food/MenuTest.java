@@ -34,6 +34,7 @@ public class MenuTest {
                     "Lunches:%n" +
                     "  Polish:%n" +
                     "    Main dish:pork chop with potatoes   Dessert:apple pie   Price:12.99$%n" +
+                    "    Main dish:ruthenian pierogi   Dessert:apple pie   Price:10.99$%n" +
                     "Drinks:%n" +
                     "  Name:water   Amount:500   Price:5.99$"
     );

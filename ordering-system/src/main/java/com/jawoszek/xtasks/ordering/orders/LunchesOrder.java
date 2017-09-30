@@ -15,7 +15,7 @@ import static com.jawoszek.xtasks.ordering.console.Console.LINE_SEPARATOR;
  */
 public class LunchesOrder {
 
-    private static final String KEY_VALUE_SEPARATOR = " - ";
+    private static final String KEY_VALUE_SEPARATOR = " - Count:";
 
     private final Currency currency;
     private final Map<Lunch, Integer> lunches = new EnumMap<>(Lunch.class);
