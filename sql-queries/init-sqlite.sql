@@ -1,3 +1,5 @@
+BEGIN;
+
 DROP TABLE IF EXISTS Country;
 DROP TABLE IF EXISTS City;
 DROP TABLE IF EXISTS Building;
@@ -38,3 +40,5 @@ INSERT INTO Building (BuildingID, CityID, Name, Floors) VALUES
   (1, 1, 'City hall', 3),
   (2, 2, 'School', 2),
   (3, 3, 'Mall', 1);
+
+COMMIT;

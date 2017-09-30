@@ -1,5 +1,5 @@
 -- Select countries with population population greater than 400
-SELECT Country.Name
+SELECT Country.*
 FROM Country
   JOIN City USING (CountryID)
 GROUP BY CountryID
