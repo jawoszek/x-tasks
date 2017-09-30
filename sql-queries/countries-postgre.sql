@@ -1,4 +1,4 @@
--- Select countries with population population greater than 400
+-- Select countries with population greater than 400
 SELECT Country.*
 FROM XF.Country
   JOIN XF.City USING (CountryID)
