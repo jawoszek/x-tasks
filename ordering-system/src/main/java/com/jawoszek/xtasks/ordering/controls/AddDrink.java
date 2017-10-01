@@ -8,7 +8,10 @@ import com.jawoszek.xtasks.ordering.orders.DrinkOrderBuilder;
 import com.jawoszek.xtasks.ordering.orders.Order;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toMap;
 
 /**
  * @author Kacper
@@ -25,8 +28,8 @@ public class AddDrink extends ControlElement {
                 .entrySet()
                 .stream()
                 .collect(
-                        Collectors.toMap(
-                                Map.Entry::getKey,
+                        toMap(
+                                Entry::getKey,
                                 entry -> entry.getValue()
                                         .getDescription(menu.getCurrency())
                         )
