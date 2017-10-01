@@ -3,12 +3,15 @@ package com.jawoszek.xtasks.ordering.orders;
 import com.jawoszek.xtasks.ordering.currency.Currency;
 import com.jawoszek.xtasks.ordering.food.Lunch;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import static com.google.common.base.Joiner.on;
 import static com.jawoszek.xtasks.ordering.console.Console.LINE_SEPARATOR;
+import static com.jawoszek.xtasks.ordering.orders.Order.orderRemovalFunction;
 
 /**
  * @author Kacper
@@ -38,6 +41,14 @@ public class LunchesOrder {
         return on(LINE_SEPARATOR)
                 .withKeyValueSeparator(KEY_VALUE_SEPARATOR)
                 .join(descriptions);
+    }
+
+    public List<Lunch> getLunchesAsList() {
+        return new ArrayList<>(lunches.keySet());
+    }
+
+    public void removeOrder(Lunch lunch, int amount) {
+        lunches.computeIfPresent(lunch, orderRemovalFunction(amount));
     }
 
     private static int calculatePriceFromEntry(Entry<Lunch, Integer> entry) {

@@ -20,7 +20,9 @@ public class ModifyOrder extends ControlElement {
     protected Map<Integer, String> actionOptions() {
         return ImmutableMap.of(
                 0, "Add lunch",
-                1, "Add drink"
+                1, "Add drink",
+                2, "Remove lunch",
+                3, "Remove drink"
         );
     }
 
@@ -31,6 +33,10 @@ public class ModifyOrder extends ControlElement {
                 return new AddLunch(console, menu, order);
             case 1:
                 return new AddDrink(console, menu, order);
+            case 2:
+                return new RemoveLunch(console, menu, order);
+            case 3:
+                return new RemoveDrink(console, menu, order);
             default:
                 throw illegalOptionException(chosenOption);
         }
