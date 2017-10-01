@@ -10,6 +10,11 @@ import java.util.Map;
 import static java.lang.String.format;
 
 /**
+ * Represents an action in user interaction with the application.
+ * Control flow is formed from classes implementing <code>ControlElement</code>.
+ * <p>
+ * Contains core logic for console integration and printing formats.
+ *
  * @author Kacper
  */
 public abstract class ControlElement {
@@ -26,6 +31,12 @@ public abstract class ControlElement {
         this.order = order;
     }
 
+    /**
+     * Process this element.
+     * Default implementation consists of printing messages and taking action option from user.
+     *
+     * @return next element in flow
+     */
     public ControlElement next() {
         console.clearScreen();
         console.printMessage(preActionMessage());

@@ -10,6 +10,8 @@ import static java.util.Collections.nCopies;
 import static java.util.Optional.ofNullable;
 
 /**
+ * Application CLI implementation.
+ *
  * @author Kacper
  */
 public class Console {

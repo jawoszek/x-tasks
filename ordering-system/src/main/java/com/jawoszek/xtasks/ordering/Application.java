@@ -7,6 +7,8 @@ import com.jawoszek.xtasks.ordering.food.Menu;
 import static com.jawoszek.xtasks.ordering.controls.NewOrder.newOrder;
 
 /**
+ * Application entry point.
+ *
  * @author Kacper
  */
 public class Application {
