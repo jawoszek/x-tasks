@@ -14,13 +14,13 @@ public class DrinkOrder {
     private final boolean iceCubs;
     private final boolean lemon;
 
-    public DrinkOrder(Drink drink, boolean iceCubs, boolean lemon) {
+    DrinkOrder(Drink drink, boolean iceCubs, boolean lemon) {
         this.drink = drink;
         this.iceCubs = iceCubs;
         this.lemon = lemon;
     }
 
-    public Drink getDrink() {
+    Drink getDrink() {
         return drink;
     }
 

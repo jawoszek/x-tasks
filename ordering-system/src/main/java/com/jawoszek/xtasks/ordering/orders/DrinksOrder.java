@@ -15,26 +15,26 @@ import static com.jawoszek.xtasks.ordering.orders.Order.orderRemovalFunction;
 /**
  * @author Kacper
  */
-public class DrinksOrder {
+class DrinksOrder {
 
     private static final String KEY_VALUE_SEPARATOR = " - ";
 
     private final Currency currency;
     private final Map<DrinkOrder, Integer> drinks = new HashMap<>();
 
-    public DrinksOrder(Currency currency) {
+    DrinksOrder(Currency currency) {
         this.currency = currency;
     }
 
-    public void addDrinks(DrinkOrder drinkOrder, int amount) {
+    void addDrinks(DrinkOrder drinkOrder, int amount) {
         drinks.merge(drinkOrder, amount, (current, added) -> current + added);
     }
 
-    public int getPrice() {
+    int getPrice() {
         return Order.getPrice(drinks, DrinksOrder::calculatePriceFromEntry);
     }
 
-    public String getOrderText() {
+    String getOrderText() {
         Map<String, String> descriptions = Order.getDescriptions(drinks, this::getDescriptionFromEntry);
 
         return on(LINE_SEPARATOR)
@@ -42,11 +42,11 @@ public class DrinksOrder {
                 .join(descriptions);
     }
 
-    public List<DrinkOrder> getDrinkOrdersAsList() {
+    List<DrinkOrder> getDrinkOrdersAsList() {
         return new ArrayList<>(drinks.keySet());
     }
 
-    public void removeOrders(DrinkOrder drinkOrder, int amount) {
+    void removeOrders(DrinkOrder drinkOrder, int amount) {
         drinks.computeIfPresent(drinkOrder, orderRemovalFunction(amount));
     }
 

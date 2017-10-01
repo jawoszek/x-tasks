@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.jawoszek.xtasks.ordering.console.Console.LINE_SEPARATOR;
-import static java.util.Arrays.stream;
 
 /**
  * @author Kacper

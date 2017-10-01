@@ -2,7 +2,7 @@ package minesweeper;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Kacper
@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class MineSweeperImplementationTest {
 
     @Test
-    public void minefield(){
+    public void minefield() {
         String input = "*...\n..*.\n....";
         String expectedOutput = "*211\n12*1\n0111";
 
@@ -18,7 +18,7 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithSingleMineCell(){
+    public void minefieldWithSingleMineCell() {
         String input = "*";
         String expectedOutput = "*";
 
@@ -26,7 +26,7 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithSingleEmptyField(){
+    public void minefieldWithSingleEmptyField() {
         String input = ".";
         String expectedOutput = "0";
 
@@ -34,7 +34,7 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithMineSquare(){
+    public void minefieldWithMineSquare() {
         String input = "**\n**";
         String expectedOutput = "**\n**";
 
@@ -42,7 +42,7 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithEmptySquare(){
+    public void minefieldWithEmptySquare() {
         String input = "..\n..";
         String expectedOutput = "00\n00";
 
@@ -50,7 +50,7 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithOneMineInSquare(){
+    public void minefieldWithOneMineInSquare() {
         String input = "..\n.*";
         String expectedOutput = "11\n1*";
 
@@ -58,14 +58,14 @@ public class MineSweeperImplementationTest {
     }
 
     @Test
-    public void minefieldWithTwoMinesInSquare(){
+    public void minefieldWithTwoMinesInSquare() {
         String input = "*.\n.*";
         String expectedOutput = "*2\n2*";
 
         testMinefield(input, expectedOutput);
     }
 
-    private static void testMinefield(String input, String expectedOutput){
+    private static void testMinefield(String input, String expectedOutput) {
         // given
         MineSweeper sweeper = new MineSweeperImplementation();
 

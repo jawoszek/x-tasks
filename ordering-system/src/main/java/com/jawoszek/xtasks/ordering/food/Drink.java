@@ -45,7 +45,7 @@ public enum Drink {
         return format(DRINK_DESCRIPTION_FORMAT, name, amountInMilliliters, priceText);
     }
 
-    public String getMenuPosition(Currency currency){
+    public String getMenuPosition(Currency currency) {
         return SMALL_INDENTATION + getDescription(currency);
     }
 }

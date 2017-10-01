@@ -5,24 +5,25 @@ import com.google.common.collect.ImmutableList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
  * @author Kacper
  */
-public class Minefield {
+class Minefield {
 
     private final int rowsCount;
     private final int columnsCount;
     private final Map<Coordinates, Cell> field = new HashMap<>();
 
-    public Minefield(int rowsCount, int columnsCount) {
+    Minefield(int rowsCount, int columnsCount) {
         this.rowsCount = rowsCount;
         this.columnsCount = columnsCount;
     }
 
-    public void addMine(int row, int column) {
+    void addMine(int row, int column) {
         Coordinates mineCoordinates = new Coordinates(row, column);
         setMineAt(mineCoordinates);
 
@@ -39,7 +40,7 @@ public class Minefield {
         );
     }
 
-    public String getTextRepresentation() {
+    String getTextRepresentation() {
         return IntStream
                 .range(0, rowsCount)
                 .mapToObj(this::getRowAsText)
@@ -69,12 +70,12 @@ public class Minefield {
         private final int row;
         private final int column;
 
-        public Coordinates(int row, int column) {
+        Coordinates(int row, int column) {
             this.row = row;
             this.column = column;
         }
 
-        public List<Coordinates> getSurrounding() {
+        List<Coordinates> getSurrounding() {
             return ImmutableList.of(
                     new Coordinates(row + 1, column + 1),
                     new Coordinates(row + 1, column),
@@ -94,14 +95,12 @@ public class Minefield {
 
             Coordinates that = (Coordinates) o;
 
-            return row == that.row && column == that.column;
+            return Objects.equals(row, that.row) && Objects.equals(column, that.column);
         }
 
         @Override
         public int hashCode() {
-            int result = row;
-            result = 31 * result + column;
-            return result;
+            return Objects.hash(row, column);
         }
     }
 }

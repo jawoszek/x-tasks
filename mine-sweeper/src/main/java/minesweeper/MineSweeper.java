@@ -1,8 +1,5 @@
 package minesweeper;
 
-/**
- * @author Kacper
- */
 public interface MineSweeper {
     /**
      * Initialises the field

@@ -16,26 +16,26 @@ import static com.jawoszek.xtasks.ordering.orders.Order.orderRemovalFunction;
 /**
  * @author Kacper
  */
-public class LunchesOrder {
+class LunchesOrder {
 
     private static final String KEY_VALUE_SEPARATOR = " - Count:";
 
     private final Currency currency;
     private final Map<Lunch, Integer> lunches = new EnumMap<>(Lunch.class);
 
-    public LunchesOrder(Currency currency) {
+    LunchesOrder(Currency currency) {
         this.currency = currency;
     }
 
-    public void addLunch(Lunch lunch, int amount) {
+    void addLunch(Lunch lunch, int amount) {
         lunches.merge(lunch, amount, (current, added) -> current + added);
     }
 
-    public int getPrice() {
+    int getPrice() {
         return Order.getPrice(lunches, LunchesOrder::calculatePriceFromEntry);
     }
 
-    public String getOrderText() {
+    String getOrderText() {
         Map<String, String> descriptions = Order.getDescriptions(lunches, this::getDescriptionFromEntry);
 
         return on(LINE_SEPARATOR)
@@ -43,11 +43,11 @@ public class LunchesOrder {
                 .join(descriptions);
     }
 
-    public List<Lunch> getLunchesAsList() {
+    List<Lunch> getLunchesAsList() {
         return new ArrayList<>(lunches.keySet());
     }
 
-    public void removeOrder(Lunch lunch, int amount) {
+    void removeOrder(Lunch lunch, int amount) {
         lunches.computeIfPresent(lunch, orderRemovalFunction(amount));
     }
 
